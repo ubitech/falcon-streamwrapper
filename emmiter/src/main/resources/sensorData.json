@@ -1,0 +1,17 @@
+{
+  "@context": {
+    "value": "https://w3id.org/saref#TotalEnergy",
+    "SensorDevice": "https://w3id.org/saref#SensorDevice",
+    "UnitOfMeasure": "https://w3id.org/saref#UnitOfMeasure",
+    "DeviceCategory": "https://w3id.org/saref#DeviceCategory",
+    "timestamp": "http://www.w3.org/2006/timestamp"
+
+  },
+  "@id": "http://eu.falcon.net/15421",
+  "@type": "SensorDevice",
+  "value": "52622",
+  "DeviceCategory": "Arduino-884",
+  "timestamp": "2016-01-01 00:02:45.113+0100",
+  "UnitOfMeasure": "watt"
+  
+}
