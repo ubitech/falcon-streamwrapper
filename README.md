@@ -1,5 +1,5 @@
-# Spring Boot Skeleton
-> An application skeleton for a Spring Boot web app
+# Falcon Data Fusion
+> Two microservices that produce json-ld data and store them both in mongo db and fuseki triplestore
 
 ## Prerequisites
 
@@ -14,14 +14,14 @@ Before moving on, make sure you have the required JDK and Maven version.
 
 ###### Install Maven on Ubuntu 
 	sudo apt-get install maven
-	
-###### Install Maven on OS X
-	brew install maven
 
 ## Run the Application
 
-	$ git clone spring-boot-skeleton.git
-	$ cd spring-boot-skeleton
 	$ mvn clean install
-	$ cd spring-boot-skeleton-app
+	$ cd emitter
 	$ mvn spring-boot:run
+	$ cd fusion
+	$ mvn spring-boot:run
+
+## Current Intallation
+* Check Falcon PoC from google docs
