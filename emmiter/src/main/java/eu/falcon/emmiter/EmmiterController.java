@@ -29,10 +29,11 @@ public class EmmiterController {
     private Environment environment;
 
     @Value("${sensor.deviceid}")
-    private static String deviceid;
+    private String deviceid;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/ld+json")
     public String helloEmmiter() {
+        logger.log(Level.INFO, "deviceid: " + deviceid);
         JSONObject a = null;
         try {
             
@@ -41,7 +42,7 @@ public class EmmiterController {
 //            InputStream inputStream = this.getClass().getResourceAsStream("/sensorData.json");
 //            myString= IOUtils.toString(inputStream, "UTF-8");
 
-            myString = generateMeasurement();
+            myString = generateMeasurement(deviceid);
             a = new JSONObject(myString);
             logger.log(Level.INFO, "a" + a.toString());
 
@@ -52,7 +53,7 @@ public class EmmiterController {
         return a.toString();
     }
 
-    private static String generateMeasurement() {
+    private static String generateMeasurement(String devid) {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String value = ""+randInt(1000,3500);
         String id = (""+(new Random()).nextDouble()).substring(2);
@@ -69,7 +70,7 @@ public class EmmiterController {
                 + "  \"@id\": \"http://eu.falcon.net/"+id+"\",\n"
                 + "  \"@type\": \"SensorDevice\",\n"
                 + "  \"value\": \""+value+"\",\n"
-                + "  \"DeviceIdentifier\": \"" + deviceid + "\",\n"
+                + "  \"DeviceIdentifier\": \"" + devid + "\",\n"
                 + "  \"timestamp\": \"" + timeStamp + "\",\n"
                 + "  \"UnitOfMeasure\": \"milli_watt_hour\"\n"
                 + " \n"
