@@ -19,14 +19,6 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.junit.Ignore;
 import org.junit.Test;
-import static org.quartz.JobBuilder.newJob;
-import org.quartz.JobDetail;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
-import org.quartz.Trigger;
-import static org.quartz.TriggerBuilder.newTrigger;
-import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
