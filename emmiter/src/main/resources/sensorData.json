@@ -1,6 +1,6 @@
 {
   "@context": {
-    "value": "https://w3id.org/saref#TotalEnergy",
+    "value": "https://w3id.org/saref#AverageEnergy",
     "SensorDevice": "https://w3id.org/saref#SensorDevice",
     "UnitOfMeasure": "https://w3id.org/saref#UnitOfMeasure",
     "DeviceCategory": "https://w3id.org/saref#DeviceCategory",
@@ -11,7 +11,7 @@
   "@type": "SensorDevice",
   "value": "52622",
   "DeviceCategory": "Arduino-884",
-  "timestamp": "2016-01-01 00:02:45.113+0100",
-  "UnitOfMeasure": "watt"
-  
+  "timestamp": "2016-06-08 00:02:45",
+  "UnitOfMeasure": "watt_hour"
+ 
 }

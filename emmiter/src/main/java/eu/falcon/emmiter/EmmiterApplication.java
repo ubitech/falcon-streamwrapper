@@ -5,18 +5,13 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @ComponentScan({
-    //Contains all the security configuration regarding the Arcadia Framework 
-    "eu.falcon.emmiter"}
-)
+    "eu.falcon.emmiter"
+})
 
-@EnableMongoRepositories("eu.falcon.emmiter")
 @EnableAutoConfiguration
 public class EmmiterApplication extends SpringBootServletInitializer {
-
-
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
