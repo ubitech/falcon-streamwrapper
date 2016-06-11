@@ -50,7 +50,7 @@ public class ScheduledFusionTask {
         //doo rest call
         try {
 
-            URL url = new URL("http://localhost:8080");
+            URL url = new URL("http://localhost:8083");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/ld+json");
@@ -81,7 +81,8 @@ public class ScheduledFusionTask {
             Model m = ModelFactory.createDefaultModel();
             String base = "http://test-projects.com/";
             m.read(inputStream, base, "JSON-LD");
-            accessor.putModel(m);
+            //accessor.putModel(m);
+            accessor.add(m);
             inputStream.close();
         } catch (IOException ex) {
             Logger.getLogger(FusionApplication.class.getName()).log(Level.SEVERE, null, ex);

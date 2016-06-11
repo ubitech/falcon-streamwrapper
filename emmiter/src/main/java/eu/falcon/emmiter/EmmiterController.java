@@ -56,11 +56,13 @@ public class EmmiterController {
     private static String generateMeasurement(String devid) {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String value = ""+randInt(1000,3500);
+        String temp = ""+randInt(1000,3500);
         String id = (""+(new Random()).nextDouble()).substring(2);
         
         String str = "{\n"
                 + "  \"@context\": {\n"
                 + "    \"value\": \"https://w3id.org/saref#AverageEnergy\",\n"
+                + "    \"temp\": \"https://w3id.org/saref#AverageTemperature\",\n"
                 + "    \"SensorDevice\": \"https://w3id.org/saref#SensorDevice\",\n"
                 + "    \"UnitOfMeasure\": \"https://w3id.org/saref#UnitOfMeasure\",\n"
                 + "    \"DeviceCategory\": \"https://w3id.org/saref#DeviceCategory\",\n"
@@ -70,6 +72,7 @@ public class EmmiterController {
                 + "  \"@id\": \"http://eu.falcon.net/"+id+"\",\n"
                 + "  \"@type\": \"SensorDevice\",\n"
                 + "  \"value\": \""+value+"\",\n"
+                + "  \"temp\": \""+temp+"\",\n"
                 + "  \"DeviceIdentifier\": \"" + devid + "\",\n"
                 + "  \"timestamp\": \"" + timeStamp + "\",\n"
                 + "  \"UnitOfMeasure\": \"milli_watt_hour\"\n"
