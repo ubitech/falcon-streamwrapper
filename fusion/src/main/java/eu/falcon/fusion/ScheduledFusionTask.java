@@ -41,7 +41,7 @@ public class ScheduledFusionTask {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(fixedRate = 50000)
+    @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
         System.out.println("The time is now " + dateFormat.format(new Date()));
         InputStream inputStream;
@@ -74,7 +74,7 @@ public class ScheduledFusionTask {
             inputStream = new ByteArrayInputStream(jsonldToSaveToMongoAndFuseki.getBytes(StandardCharsets.UTF_8));
             //inputStream = new FileInputStream("/home/eleni/NetBeansProjects/falcon-data-management/fusion/src/main/resources/sensorData.json");
 
-            String serviceURI = "http://192.168.3.15:3030/ds/data";
+            String serviceURI = "http://localhost:3030/ds/data";
             //DatasetAccessorFactory factory = null;
             DatasetAccessor accessor;
             accessor = DatasetAccessorFactory.createHTTP(serviceURI);

@@ -36,7 +36,7 @@ public class EmmiterController {
         logger.log(Level.INFO, "deviceid: " + deviceid);
         JSONObject a = null;
         try {
-            
+
             String myString = "";
             //get from static file
 //            InputStream inputStream = this.getClass().getResourceAsStream("/sensorData.json");
@@ -55,11 +55,11 @@ public class EmmiterController {
 
     private static String generateMeasurement(String devid) {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        String value = ""+randInt(1000,3500);
-        String temp = ""+randInt(1000,3500);
-        String id = (""+(new Random()).nextDouble()).substring(2);
-        
-        String str = "{\n"
+        String value = "" + randInt(1000, 3500);
+        String temp = "" + randInt(17, 40);
+        String id = ("" + (new Random()).nextDouble()).substring(2);
+
+        String strall = "{\n"
                 + "  \"@context\": {\n"
                 + "    \"value\": \"https://w3id.org/saref#AverageEnergy\",\n"
                 + "    \"temp\": \"https://w3id.org/saref#AverageTemperature\",\n"
@@ -69,15 +69,47 @@ public class EmmiterController {
                 + "    \"timestamp\": \"http://www.w3.org/2006/timestamp\"\n"
                 + "\n"
                 + "  },\n"
-                + "  \"@id\": \"http://eu.falcon.net/"+id+"\",\n"
+                + "  \"@id\": \"http://eu.falcon.net/" + id + "\",\n"
                 + "  \"@type\": \"SensorDevice\",\n"
-                + "  \"value\": \""+value+"\",\n"
-                + "  \"temp\": \""+temp+"\",\n"
+                + "  \"value\": \"" + value + "\",\n"
+                + "  \"temp\": \"" + temp + "\",\n"
                 + "  \"DeviceIdentifier\": \"" + devid + "\",\n"
                 + "  \"timestamp\": \"" + timeStamp + "\",\n"
                 + "  \"UnitOfMeasure\": \"milli_watt_hour\"\n"
                 + " \n"
                 + "}";
+
+        String str = "{\n"
+                + "	\"@type\": \"SensorDevice\",\n"
+                + "	\"@id\": \"http://eu.falcon.net/" + id + "\",\n"
+                + "	\"@context\": {\n"
+                + "		\"UnitOfMeasure\": \"https://w3id.org/saref#UnitOfMeasure\",\n"
+                + "		\"SensorDevice\": \"https://w3id.org/saref#SensorDevice\",\n"
+                + "		\"DeviceCategory\": \"https://w3id.org/saref#DeviceCategory\",\n"
+                + "		\"DeviceIdentifier\": \"https://w3id.org/saref#DeviceIdentifier\",\n"
+                + "		\"measurement\": \"https://w3id.org/saref#Measurement\",\n"
+                + "		\"value\": \"https://w3id.org/saref#MeasurementValue\",\n"
+                + "		\"consumption\": \"https://w3id.org/saref#AverageEnergy\",\n"
+                + "		\"timestamp\": \"http://www.w3.org/2006/timestamp\",\n"
+                + "		\"temp\": \"https://w3id.org/saref#AverageTemperature\"\n"
+                + "	},\n"
+                + "	\"measurement\": [{\n"
+                + "		\"@id\": \"http://eu.falcon.net/c/" + id + "\",\n"
+                + "		\"@type\": \"consumption\",\n"
+                + "		\"value\": \"" + value + "\",\n"
+                + "		\"UnitOfMeasure\": \"milli_watt_hour\",\n"
+                + "		\"DeviceIdentifier\": \"Arduino-111\",\n"
+                + "		\"timestamp\": \"" + timeStamp + "\"\n"
+                + "	}, {\n"
+                + "		\"@id\": \"http://eu.falcon.net/t/" + id + "\",\n"
+                + "		\"@type\": \"temp\",\n"
+                + "		\"value\": \"" + temp + "\",\n"
+                + "		\"UnitOfMeasure\": \"celcius\",\n"
+                + "		\"DeviceIdentifier\": \"Arduino-111\",\n"
+                + "		\"timestamp\": \"" + timeStamp + "\"\n"
+                + "	}]\n"
+                + "}";
+
         return str;
     }
 
@@ -89,5 +121,5 @@ public class EmmiterController {
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
     }
-    
+
 }
