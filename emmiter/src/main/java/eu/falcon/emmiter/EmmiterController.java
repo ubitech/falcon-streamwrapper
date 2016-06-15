@@ -1,7 +1,11 @@
 package eu.falcon.emmiter;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -32,7 +36,7 @@ public class EmmiterController {
     private String deviceid;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/ld+json")
-    public String helloEmmiter() {
+    public String helloEmitter() {
         logger.log(Level.INFO, "deviceid: " + deviceid);
         JSONObject a = null;
         try {
@@ -52,6 +56,7 @@ public class EmmiterController {
 
         return a.toString();
     }
+
 
     private static String generateMeasurement(String devid) {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
